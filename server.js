@@ -10,7 +10,7 @@ const path = require("path");
 
 dotenv.config();
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -18,7 +18,7 @@ app.use(express.static("public"));
 
 // Session configuration
 app.use(session({
-  secret: 'your-secret-key',
+  secret: process.env.SESSION_SECRET || 'your-secret-key',
   resave: false,
   saveUninitialized: false
 }));
@@ -30,7 +30,9 @@ app.use(passport.session());
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "/auth/google/callback"
+  callbackURL: process.env.NODE_ENV === 'production' 
+    ? "https://ai-blog-generator-jbnx.onrender.com/auth/google/callback"
+    : "http://localhost:3000/auth/google/callback"
 }, (accessToken, refreshToken, profile, done) => {
   return done(null, profile);
 }));
