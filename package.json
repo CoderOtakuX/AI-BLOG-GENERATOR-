@@ -1,0 +1,42 @@
+{
+  "name": "ai-blog-generator",
+  "version": "1.0.0",
+  "description": "AI-powered blog generator using DeepSeek AI with Google OAuth authentication",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ai",
+    "blog",
+    "generator",
+    "deepseek",
+    "openrouter",
+    "nodejs",
+    "express",
+    "oauth"
+  ],
+  "author": "CoderOtakuX",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CoderOtakuX/AI-BLOG-GENERATOR-.git"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "axios": "^1.11.0",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^4.21.2",
+    "express-session": "^1.18.2",
+    "node-fetch": "^3.3.2",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0"
+  }
+}
