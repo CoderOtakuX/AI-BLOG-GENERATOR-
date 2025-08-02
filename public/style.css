@@ -1,39 +1,135 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #f7f7f7;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+:root {
+  --background-color: #f5f5f7;
+  --text-color: #1d1d1f;
+  --container-bg: #ffffff;
+  --button-primary: #4285f4;
+  --button-secondary: #6c757d;
+  --button-text: #ffffff;
+  --border-color: #e5e5e7;
+  --input-bg: #ffffff;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.dark-mode {
+  --background-color: #1e1e1e;
+  --text-color: #f5f5f7;
+  --container-bg: #2d2d30;
+  --button-primary: #0d6efd;
+  --button-secondary: #495057;
+  --button-text: #ffffff;
+  --border-color: #404040;
+  --input-bg: #3c3c3c;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 .container {
-  max-width: 500px;
+  max-width: 800px;
   margin: 40px auto;
-  background: #fff;
-  padding: 2em;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: var(--container-bg);
+  padding: 3em;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
 }
 h1 {
   text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  background: linear-gradient(135deg, #4285f4, #34a853);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 form {
   display: flex;
   flex-direction: column;
-  gap: 1em;
-  margin-bottom: 2em;
+  gap: 1.5em;
+  margin: 2em 0;
 }
 input[type="text"] {
-  padding: 0.5em;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 1em;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--button-primary);
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.1);
+}
+
+label {
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.5em;
 }
 button {
-  padding: 0.7em;
-  background: #4285f4;
-  color: #fff;
+  padding: 1em 2em;
+  background: var(--button-primary);
+  color: var(--button-text);
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin: 0.5em 0;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.button-group {
+  display: flex;
+  gap: 1em;
+  margin-bottom: 2em;
+  flex-wrap: wrap;
+}
+
+.button-group button {
+  flex: 1;
+  min-width: 200px;
+}
+
+#theme-toggle {
+  background: var(--button-secondary);
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 20px;
+    padding: 2em;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .button-group {
+    flex-direction: column;
+  }
+  
+  .button-group button {
+    min-width: unset;
+  }
 }
 button:disabled {
   background: #aaa;
@@ -44,29 +140,41 @@ button:disabled {
 }
 .version {
   margin-bottom: 2em;
-  padding: 1em;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: #f9f9f9;
+  padding: 2em;
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  background: var(--container-bg);
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.version:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
 }
 .version h3 {
   margin-top: 0;
-  color: #333;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 .version pre {
   white-space: pre-wrap;
   word-wrap: break-word;
-  background: #fff;
-  padding: 1em;
-  border-radius: 4px;
-  border: 1px solid #eee;
-  max-height: 200px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  padding: 1.5em;
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+  max-height: 300px;
   overflow-y: auto;
-  font-family: inherit;
-  line-height: 1.5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  font-size: 0.95rem;
 }
 .version div {
-  margin-top: 0.5em;
+  margin-top: 1em;
   font-size: 0.9em;
-  color: #666;
+  color: var(--button-secondary);
+  font-weight: 500;
 }

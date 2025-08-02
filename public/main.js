@@ -2,6 +2,26 @@ document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('generate-form');
   const resultsDiv = document.getElementById('results');
   const loginButton = document.getElementById('google-login');
+  const themeToggleButton = document.getElementById('theme-toggle');
+
+  // Initialize theme
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  if (currentTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    themeToggleButton.textContent = '☀️ Light Mode';
+  } else {
+    themeToggleButton.textContent = '🌙 Dark Mode';
+  }
+
+  // Handle theme toggle
+  themeToggleButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+    
+    // Update button text
+    themeToggleButton.textContent = theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+  });
 
   // Check authentication status on page load
   checkAuthStatus();
